@@ -2,14 +2,14 @@
 
 Puppeteer example with distributed tests that may be scaled with container instances and monitoring through Prometheus.
 
-<img src="diagram1.png" width=400>
+<img src="diagram1.png" width=600>
 
 * You have to change the test and some code with your own website in order for this to work.
 
 
 * During test execution you will see in Grafana something like
 
-<img src="diagram2.jpg" width=500>
+<img src="diagram2.jpg" width=700>
 
 Build the optimal metrics using promgrep (see start_monitored_resolve_restudantes.sh) for your case and create your own Grafana dashboards.
 
