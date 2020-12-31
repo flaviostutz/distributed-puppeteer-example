@@ -1,0 +1,31 @@
+version: "3.5"
+
+services:
+  tests:
+    build: .
+    environment:
+      - RUN_PARALLEL_USERS=4
+      - TIME_BETWEEN_NEW_USERS=0
+      - TIME_BETWEEN_NEW_TESTS=2.0
+      - FORCE_USER_CREATION=false
+      - CLICK_ANTERIOR_CHANCE=20
+      - TEST_MODE=RESOLVE_ALUNOS
+      - ESTUDANTE_RESOLVER_URL=http://host.docker.internal:3333/stress/resolve-aluno
+      - APP_ALUNOS_URL=http://host.docker.internal:3000
+      - APP_BACKEND_URL=http://host.docker.internal:5000
+      - PERFORM_SCROLL=false
+      - JEST_TEST_TIMEOUT=10000
+      - TAKE_SCREENSHOTS_CHANCE=100
+      - TAKE_SCREENSHOTS=true
+      - ENDPOINT_AUDIT_URL=https://yyyyy.com
+      - MIN_QUESTION_TIME=1000
+      - MAX_QUESTION_TIME=5000
+    volumes:
+      - ./__tests__:/app/__tests__
+      - ./screenshots:/app/screenshots
+      - users:/data
+    ports:
+      - 8880:8880
+
+volumes:
+  users:

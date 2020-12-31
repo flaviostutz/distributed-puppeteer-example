@@ -1,0 +1,15 @@
+stages:
+  - build
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+
+build:
+  stage: build
+  only:
+    - tags
+  script:
+    - docker-compose -f docker-compose-build.yml build
+    - docker-compose -f docker-compose-build.yml push
+  tags:
+    - vpsdime
